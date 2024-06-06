@@ -73,19 +73,11 @@ void	CCGuidance::EDROOM_CTX_Top_0::FDoGuidance()
 {
    //Define absolute time
   Pr_Time time;
-//creamos un algoritmo con un periodo de 100 ms
-
-VNextTimeout+= Pr_Time(0,1000); // Add X sec + Y microsec
+	  
+VNextTimeout+= Pr_Time(0,100); // cada 100 ms, inform at para evitar problema de la deriva
 time=VNextTimeout; 
  
-
-//Hacemos el control periodico de la funcion definida en GuidanceControl
-PUSService129::GuidanceControl();
- 
- 
- 
-	
-	
+PUSService129:GuidanceControl;		
    //Program absolute timer 
    GuidanceTimer.InformAt( time ); 
 }
@@ -96,12 +88,14 @@ void	CCGuidance::EDROOM_CTX_Top_0::FExecGuidanceTC()
 
 {
    //Handle Msg->data
-  CDTCHandler & varSGuidance_TC = *(CDTCHandler *)Msg->data;
+  CDTCHandler & varSGuidanceTC = *(CDTCHandler *)Msg->data;
+	
+ 
 	
 		// Data access
 	
 CDEventList TCExecEventList;
-PUS_GuidanceTCExecutor::ExecTC(varSGuidance_TC,VCurrentTMList,TCExecEventList);
+PUS_GuidanceTCExecutor::ExecTC(varSGuidanceTC,VCurrentTMList,TCExecEventList);
 
 }
 
@@ -112,14 +106,10 @@ void	CCGuidance::EDROOM_CTX_Top_0::FInitGuidance()
 {
    //Define absolute time
   Pr_Time time;
-//hacemos el control periodico de 100 ms
-
+ 
 time.GetTime(); // Get current monotonic time   
-
-time+=Pr_Time(0,1000); // Add X sec + Y microsec
+time+=Pr_Time(0,100); // Add X sec + Y microsec    
 VNextTimeout=time;
-
-//definimos el init
 PUSService129::Init(); //Init PUSService 129
  
    //Program absolute timer 
@@ -313,7 +303,7 @@ TEDROOMTransId CCGuidance::EDROOM_SUB_Top_0::EDROOMReadyArrival()
 		switch(Msg->signal)
 		{
 
-			case (SGuidance_TC): 
+			case (SGuidanceTC): 
 
 				 if (*Msg->GetPInterface() == GuidanceCtrl)
 				{

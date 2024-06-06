@@ -95,7 +95,7 @@ TEDROOMSignal CEDROOMSystemCommSAP::C2ExplorerManager_PGuidanceCtrl__C6Guidance_
  
 	switch(signalOut){
  
-		case( CCExplorerManager::SGuidance_TC):	 signalIn=CCGuidance::SGuidance_TC; break;
+		case( CCExplorerManager::SGuidanceTC):	 signalIn=CCGuidance::SGuidanceTC; break;
  
 		default: signalIn=(TEDROOMSignal)(-1); break;
  

@@ -13,7 +13,13 @@
 
 #include <public/cdtmlist_iface_v1.h>
 #include <public/cdtchandler_iface_v1.h>
+
+
+//******************************************************************************
+// Required software interfaces
+
 #include <public/icuasw_pus_services_iface_v1.h>
+
 
 /**
  * \class   CCGuidance
@@ -30,7 +36,7 @@ public:
 	 */
 	 enum TEDROOMCCGuidanceSignal { EDROOMSignalTimeout, 
 							EDROOMSignalDestroy, 
-							SGuidance_TC, 
+							SGuidanceTC, 
 							STxTM, 
 							STMQueued };
 
@@ -179,7 +185,7 @@ public:
 	 */
 	enum TEDROOMCCGuidanceSignal { EDROOMSignalTimeout,
 		EDROOMSignalDestroy,
-		SGuidance_TC,
+		SGuidanceTC,
 		STxTM,
 		STMQueued };
 

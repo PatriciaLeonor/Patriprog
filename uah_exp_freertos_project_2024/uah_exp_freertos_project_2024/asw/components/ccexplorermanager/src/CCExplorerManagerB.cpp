@@ -94,14 +94,13 @@ void	CCExplorerManager::EDROOM_CTX_Top_0::FFwdGuidanceTC()
 
 {
    //Allocate data from pool
-  CDTCHandler * pSGuidance_TC_Data = EDROOMPoolCDTCHandler.AllocData();
+  CDTCHandler * pSGuidanceTC_Data = EDROOMPoolCDTCHandler.AllocData();
 	
 		// Complete Data 
 	
-	*pSGuidance_TC_Data=VCurrentTC;
+	*pSGuidanceTC_Data=VCurrentTC;
    //Send message 
-   GuidanceCtrl.send(SGuidance_TC,pSGuidance_TC_Data,
-                                                       &EDROOMPoolCDTCHandler); 
+   GuidanceCtrl.send(SGuidanceTC,pSGuidanceTC_Data,&EDROOMPoolCDTCHandler); 
 }
 
 
@@ -258,6 +257,7 @@ bool	CCExplorerManager::EDROOM_CTX_Top_0::GFwdToGuidanceTC()
 {
 
  return VCurrentTC.IsGuidanceTC();
+// comprueba que es enumerado correcto
 
 }
 
